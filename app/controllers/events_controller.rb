@@ -2,7 +2,7 @@ class EventsController < ApplicationController
 	before_action :set_event, :only =>[:show, :edit, :update, :destroy]
 	#GET /events/index
 	def index
-		@events = Event.all
+		@events = Event.page(params[:page]).per(10)
 	end
 
 	#GET /events/new
@@ -13,9 +13,12 @@ class EventsController < ApplicationController
 	#POST /events/create
 	def create
 		@event = Event.new(event_params)
-		@event.save
-
-		redirect_to :action => :index
+		if @event.save
+			flash[:notice] = "新增成功"
+			redirect_to :action => :index
+		else
+			render :action => :new
+		end
 	end
 
 	#GET /events/show/:id
