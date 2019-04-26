@@ -31,13 +31,18 @@ class EventsController < ApplicationController
 
 	#POST /events/update/:id
 	def update
-		@event.update(event_params)
-		redirect_to :action => :show, :id => @event
+		if @event.update(event_params)
+			flash[:notice] = "更新成功"
+			redirect_to :action => :show, :id => @event
+		else 
+			render :action => :edit
+		end	
 	end
 
 	#POST /events/destory/:id
 	def destroy
 		@event.destroy
+		flash[:alert] = "删除成功"
 		redirect_to :action => :index
 	end
 
