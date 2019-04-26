@@ -4,10 +4,24 @@ class EventsController < ApplicationController
 	#GET /events
 	def index
 		@events = Event.page(params[:page]).per(10)
+
+		respond_to do |format|
+			format.html
+			format.json {
+				render :json => @events.to_json
+			}
+		end
+
 	end
 
 	#GET /events/:id
 	def show
+		respond_to do |format|
+			format.html
+			format.json {
+				render :json => {:id => @event.id, :name => @event.name}.to_json
+			}
+		end
 	end
 
 	#GET /events/new
@@ -25,8 +39,6 @@ class EventsController < ApplicationController
 			render :action => :new
 		end
 	end
-
-
 
 	#PATCH /events/:id/edit
 	def edit

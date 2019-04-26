@@ -3,6 +3,7 @@
 		<li>
 			<%= e.name %>
 			<%= link_to 'Show', event_path(e) %>
+			<%= link_to 'Go Json', event_path(e,:format => :json) %>
 			<%= link_to 'Edit', edit_event_path(e) %>
 			<%= link_to 'Delete', event_path(e), :method => :delete %>
 		</li>
