@@ -33,13 +33,13 @@ class EventsController < ApplicationController
 	end
 
 	#POST /events/destory/:id
-	def destory
+	def destroy
 		@event.destroy
 		redirect_to :action => :index
 	end
 
 	private
-	
+
 	def set_event
   	@event = Event.find(params[:id])
 	end
