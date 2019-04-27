@@ -1,15 +1,22 @@
 <h1>Events List</h1>
-<ul>
+<table class="table table-bordered">
 	<% @events.each do |e| %>
-		<li>
-			<%= e.name %>
-			<%= link_to 'Show', event_path(e) %>
-			<%= link_to 'Go Json', event_path(e,:format => :json) %>
-			<%= link_to 'Edit', edit_event_path(e) %>
-			<%= link_to 'Delete', event_path(e), :method => :delete %>
-		</li>
+		<tr>
+			<td>
+				<%= e.name %>
+			</td>
+			<td>
+			<%= link_to 'Show', event_path(e), :class => "btn btn-primary" %>
+			
+			<%= link_to 'Go Json', event_path(e,:format => :json) , :class => "btn btn-default"%>
+			
+			<%= link_to 'Edit', edit_event_path(e), :class => "btn btn-default" %>
+			
+			<%= link_to 'Delete', event_path(e), :method => :delete , :class => "btn btn-danger"%>
+			</td>
+		</tr>
 	<% end %>
-</ul>
-<%= link_to 'New', new_event_path %>
-
+</table>
+<%= link_to 'New', new_event_path,:class => "btn btn-primary"%>
+<br/>
 <%= paginate @events %>

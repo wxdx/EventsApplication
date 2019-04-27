@@ -38,6 +38,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'kaminari'
+gem 'bootstrap-sass', '~> 3.4.1'
 
 #heroku
 gem 'pg', group: :production
