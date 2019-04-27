@@ -19,7 +19,7 @@ class EventsController < ApplicationController
 		respond_to do |format|
 			format.html
 			format.json {
-				render :json => {:id => @event.id, :name => @event.name}.to_json
+				render :json => {:id => @event.id, :name => @event.name, :description => @event.description}.to_json
 			}
 		end
 	end
